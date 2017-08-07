@@ -1,0 +1,15 @@
+spring.mvc.view.prefix: WEB-INF/jsp/
+spring.mvc.view.suffix: .jsp
+
+welcome.message: Hello spring-boot
+
+
+logging:
+  level:
+    #ROOT: DEBUG
+    org.springframework.web: ERROR
+    kr.kein: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file: e:/home/debug.log

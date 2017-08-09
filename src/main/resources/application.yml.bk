@@ -1,5 +1,7 @@
-spring.mvc.view.prefix: WEB-INF/jsp/
-spring.mvc.view.suffix: .jsp
+spring:
+    view:
+        prefix: /WEB-INF/jsp/
+        suffix: .jsp
 
 welcome.message: Hello spring-boot
 

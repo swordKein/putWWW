@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class WelcomeController {
@@ -25,6 +26,13 @@ public class WelcomeController {
 
 		model.put("message", this.message);
 		return "welcome";
+	}
+
+	@RequestMapping("/hello")
+	public @ResponseBody String hello(Map<String, Object> model) {
+
+		logger.debug("Hello!");
+		return "Hello!";
 	}
 
 }

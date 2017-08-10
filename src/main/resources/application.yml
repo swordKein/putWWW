@@ -1,0 +1,63 @@
+spring:
+  profiles:
+    active: dev
+  view:
+    prefix: /WEB-INF/jsp/
+    suffix: .jsp
+  timerName: exampleTimer
+
+welcome:
+  message: Hello spring-boot
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    lazyLoadingEnabled: true
+    aggressiveLazyLoading: false
+    mapUnderscoreToCamelCase: true
+
+logging:
+  level:
+    #ROOT: DEBUG
+    org.springframework.web: WARN
+    kr.kein: DEBUG
+  pattern:
+    #console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    console: "DEV::%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{15}) - %msg %n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file: e:/home/debug.log
+
+---
+spring:
+  profiles: local
+  task:
+    fixedDelay: 1000
+    name: localTask
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/py
+    username: py
+    password: py!
+---
+spring:
+  profiles: dev
+  task:
+    fixedDelay: 5000
+    name: devTask
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://phr-test05:3306/daisy_web
+    username: daisy
+    password: daisy!
+---
+spring:
+  profiles: prod
+  task:
+    fixedDelay: 5000
+    name: devTask
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://phr-test05/daisy_web
+    username: daisy
+    password: daisy!

@@ -1,3 +1,4 @@
+#VM OPTION : -Dspring.profiles.active=prod
 spring:
     view:
         prefix: /WEB-INF/jsp/

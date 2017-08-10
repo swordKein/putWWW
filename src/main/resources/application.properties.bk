@@ -1,8 +1,21 @@
-welcome.message: Hello Mkyong
+spring.view.prefix=/WEB-INF/jsp/
+spring.view.suffix=.jsp
+spring.timerName=exampleTimer
 
-#logging.level.org.springframework.web=ERROR
-#logging.level.kr.kein=DEBUG
-#logging.level.=DEBUG
-#logging.file=${java.io.tmpdir}/application.log
+welcome.message=Hello spring-boot
 
-#logging.file=/Users/mkyong/debug2.log
+mybatis.mapper-locations=classpath:mapper/*.xml
+mybatis.configuration.lazyLoadingEnabled=true
+mybatis.configuration.aggressiveLazyLoading=false
+mybatis.configuration.mapUnderscoreToCamelCase=true
+
+logging.org.springframework.web=WARN
+logging.kr.kein=DEBUG
+logging.pattern.console="DEV::%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{15}) - %msg %n"
+logging.pattern.file="%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+logging.file=e:/home/debug.log
+
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://phr-test05/daisy_web
+spring.datasource.username=daisy
+spring.datasource.password=daisy!

@@ -41,8 +41,19 @@ function fire_ajax_submit() {
             console.log("SUCCESS : ", data);
             $("#txt_view_byte").html(data.readbyte);
             $("#txt_view_utf8").html(data.strutf8);
-            $("#txt_view_cp949").html(data.strcp949);
+            $("#txt_view_ms949").html(data.strms949);
             $("#txt_view_hdfs").html(data.strutf8);
+
+            var option_values;
+            option_values += "<option value='utf-8'>"+data.strutf8+"</option>";
+            option_values += "<option value='ms949'>"+data.strms949+"</option>";
+            $("#selCharset option").remove();
+            $("#selCharset").append(option_values);
+            if(data.detCharset == 'utf-8') {
+                $("#selCharset option:eq(0)").attr('selected','selected')
+            } else {
+                $("#selCharset option:eq(1)").attr('selected','selected')
+            }
 
             $("#btnSubmit").prop("disabled", false);
 

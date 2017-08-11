@@ -152,7 +152,7 @@ public class UploadController {
 
 		byte[] readByte = null;
 		String result_utf8 = "";
-		String result_cp949 = "";
+		String result_ms949 = "";
 		String detCharset = "";
 
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
@@ -169,8 +169,8 @@ public class UploadController {
 
 			System.out.println("#byteSize::"+byteSize);
 
-			result_utf8 = FileUtils.convertByteToString(readByte, "UTF-8", 1000);
-			result_cp949 = FileUtils.convertByteToString(readByte, "cp949", 1000);
+			result_utf8 = FileUtils.convertByteToString(readByte, "utf-8", 30);
+			result_ms949 = FileUtils.convertByteToString(readByte, "ms949", 30);
 
 			InputStream fis = new ByteArrayInputStream(readByte);
 			//FileInputStream fis = new FileInputStream(uploadfile.getOriginalFilename());
@@ -187,7 +187,7 @@ public class UploadController {
 
 		resultMap.put("readbyte", readByte);
 		resultMap.put("strutf8", result_utf8);
-		resultMap.put("strcp949", result_cp949);
+		resultMap.put("strms949", result_ms949);
 		resultMap.put("detCharset", detCharset);
 		return resultMap;
 	}

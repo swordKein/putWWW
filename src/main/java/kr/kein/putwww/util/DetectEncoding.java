@@ -27,7 +27,6 @@ public class DetectEncoding {
         }
 
         byte[] data = output.toByteArray();
-
         // Detect encoding
         Map<String, int[]> encodingsScores = new HashMap<>();
 
@@ -59,9 +58,16 @@ public class DetectEncoding {
                 maxEntry = e;
             }
         }
+        universalDetector.dataEnd();
+        universalDetector.reset();
 
         String winningEncoding = maxEntry.getKey();
         //dumpEncodingsScores(encodingsScores);
+
+        // 한글 디코딩 후 깨지는 문자가 있으면 강제로 cp949 로 리턴
+        String cuttedStr = convertByteToString(data, winningEncoding, 1000);
+        if (cuttedStr.contains("�")) winningEncoding = "ms949";
+
         return winningEncoding;
     }
 
@@ -130,5 +136,18 @@ public class DetectEncoding {
             return detectedCharset;
         }
         return detectedCharset;
+    }
+
+    private static String convertByteToString(byte[] req, String charset, int size) {
+        String result = "";
+        try {
+            if (req != null) {
+                result = new String(req, charset);
+                if (result.length() > size) result = result.substring(0,size);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 }

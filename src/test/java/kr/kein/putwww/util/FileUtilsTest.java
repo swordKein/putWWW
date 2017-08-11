@@ -21,7 +21,7 @@ public class FileUtilsTest {
 
 	@Test
 	public void testFileReadTest() throws Exception{
-		String fileName = "utf8.txt";
+		String fileName = "wan.txt";
 		String filePath = "e:\\upload\\" + fileName;
 
 		List<MultipartFile> files = new ArrayList<MultipartFile>();
@@ -45,7 +45,10 @@ public class FileUtilsTest {
 		String strUtf8 = FileUtils.convertByteToString(result, "utf-8", 40);
 		System.out.println("#Result utf8 str:"+strUtf8);
 
-		String strCp949 = FileUtils.convertByteToString(result, "cp949", 40);
+		boolean isCrack = strUtf8.contains("�");
+		System.out.println("#Result utf8 is_CRACK?:"+isCrack);
+
+		String strCp949 = FileUtils.convertByteToString(result, "ms949", 40);
 		System.out.println("#Result cp949 str:"+strCp949);
 	}
 }

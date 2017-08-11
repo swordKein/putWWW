@@ -1,4 +1,4 @@
-package kr.kein.putwww;
+package kr.kein.putwww.controller;
 
 import java.util.Map;
 
@@ -23,7 +23,7 @@ public class WelcomeController {
 	@Autowired
 	private TestService testService;
 
-	@RequestMapping("/")
+	@RequestMapping("/welcome")
 	public String welcome(Map<String, Object> model) {
 
 		logger.debug("Welcome {}", "testing");

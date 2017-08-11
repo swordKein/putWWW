@@ -136,6 +136,33 @@
 			<artifactId>lombok</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+
+		<!-- Charset Encoding -->
+		<!-- https://mvnrepository.com/artifact/com.ibm.icu/icu4j -->
+		<dependency>
+			<groupId>com.ibm.icu</groupId>
+			<artifactId>icu4j</artifactId>
+			<version>59.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.codehaus.guessencoding/guessencoding -->
+		<dependency>
+			<groupId>org.codehaus.guessencoding</groupId>
+			<artifactId>guessencoding</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.googlecode.juniversalchardet/juniversalchardet -->
+		<dependency>
+			<groupId>com.googlecode.juniversalchardet</groupId>
+			<artifactId>juniversalchardet</artifactId>
+			<version>1.0.3</version>
+		</dependency>
+		<!-- Charset Encoding END! -->
+
 	</dependencies>
 
 

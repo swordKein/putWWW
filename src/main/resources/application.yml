@@ -17,6 +17,11 @@ mybatis:
     aggressiveLazyLoading: false
     mapUnderscoreToCamelCase: true
 
+#org.quartz.scheduler.instanceName: kr.kein.putwww
+org.quartz.scheduler.instanceId: AUTO
+org.quartz.threadPool.threadCount: 5
+org.quartz.jobStore.class: org.quartz.simpl.RAMJobStore
+
 logging:
   level:
     #ROOT: DEBUG
@@ -50,6 +55,14 @@ spring:
     url: jdbc:mysql://phr-test05:3306/daisy_web
     username: daisy
     password: daisy!
+schedule :
+  jobs :
+    -
+      cronExpression : 0/5 * * * * ?
+      dataToWrite : frst job
+    -
+      cronExpression : 0/7 * * * * ?
+      dataToWrite : second job
 ---
 spring:
   profiles: prod

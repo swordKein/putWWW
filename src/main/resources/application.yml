@@ -40,21 +40,10 @@ spring:
     fixedDelay: 1000
     name: localTask
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: org.postgresql.Driver
     url: jdbc:mysql://localhost:3306/py
     username: py
     password: py!
----
-spring:
-  profiles: dev
-  task:
-    fixedDelay: 5000
-    name: devTask
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://phr-test05:3306/daisy_web
-    username: daisy
-    password: daisy!
 schedule :
   jobs :
     -
@@ -65,12 +54,44 @@ schedule :
       dataToWrite : second job
 ---
 spring:
+  profiles: dev
+  task:
+    fixedDelay: 5000
+    name: devTask
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/testdb
+    username: test
+    password: test!
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+      show-sql: auto
+    properties:
+      hibernate:
+        current_session_context_class: org.springframework.orm.hibernate4.SpringSessionContext
+schedule :
+  jobs :
+    -
+      cronExpression : 0 1 * * * ?
+      dataToWrite : dummy job
+---
+spring:
   profiles: prod
   task:
     fixedDelay: 5000
     name: devTask
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: org.postgresql.Driver
     url: jdbc:mysql://phr-test05/daisy_web
     username: daisy
     password: daisy!
+schedule :
+  jobs :
+    -
+      cronExpression : 0/5 * * * * ?
+      dataToWrite : frst job
+    -
+      cronExpression : 0/7 * * * * ?
+      dataToWrite : second job
